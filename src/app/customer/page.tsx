@@ -1,0 +1,164 @@
+import React from 'react'
+import {DataTable} from "@/components/data-table";
+import {columns} from "./columns";
+
+
+const data=[
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:"123132",
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+
+];
+const Page = () => {
+  return (
+    <div className="py-10 px-20">
+        <div className='container'>
+            <h1 className='text-3xl font-bold'>All user</h1>
+            <DataTable columns={columns}  data={data}/>
+        </div>
+    </div>
+  )
+}
+
+export default Page
