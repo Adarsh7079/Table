@@ -8,7 +8,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -17,7 +17,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -26,7 +26,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -35,7 +35,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -44,7 +44,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -53,7 +53,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -62,7 +62,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -71,7 +71,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -80,7 +80,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -89,7 +89,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -98,7 +98,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -107,7 +107,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -116,7 +116,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -125,7 +125,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -134,7 +134,7 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
@@ -143,12 +143,101 @@ const data=[
         Name:"Adarsh",
         Trade:"SDE",
         Account:"Active",
-        ERP_ID:"123132",
+        ERP_ID:123132,
         Tax_Status:"Active",
         Contact:"adad",
         Document:"asdasd"
     },
-
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"Adarsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
+    {
+        Name:"darsh",
+        Trade:"SDE",
+        Account:"Active",
+        ERP_ID:123132,
+        Tax_Status:"Active",
+        Contact:"adad",
+        Document:"asdasd"
+    },
 ];
 const Page = () => {
   return (
