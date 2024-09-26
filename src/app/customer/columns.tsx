@@ -15,8 +15,8 @@ import {
  
 
 
-export type Payment = {
-  Name: string;
+export type User = {
+   Name: string;
   Trade: string;
   Account: string;
   ERP_ID: number;
@@ -25,7 +25,7 @@ export type Payment = {
   Document: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "Name",
     header: ({ column }) => {
@@ -69,7 +69,7 @@ export const columns: ColumnDef<Payment>[] = [
     {
       id: "actions",
       cell: ({ row }) => {
-        const payment = row.original
+        const user = row.original
    
         return (
           <DropdownMenu>
@@ -84,11 +84,10 @@ export const columns: ColumnDef<Payment>[] = [
               <DropdownMenuItem
                 // onClick={() => navigator.clipboard.writeText(payment.id)}
               >
-                Copy payment ID
+              user Id
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>View customer</DropdownMenuItem>
-              <DropdownMenuItem>View payment details</DropdownMenuItem>
+            
             </DropdownMenuContent>
           </DropdownMenu>
         )
