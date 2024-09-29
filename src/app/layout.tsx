@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { Toast } from "@radix-ui/react-toast";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
