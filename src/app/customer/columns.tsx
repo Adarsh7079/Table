@@ -16,7 +16,7 @@ import {
 
 
 export type User = {
-   Name: string;
+  Name: string;
   Trade: string;
   Account: string;
   ERP_ID: number;
