@@ -16,31 +16,33 @@ import {
   FormLabel,
 
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  Name: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  Name: z.string().min(5, {
+    message: "Username must be at least 5 characters.",
   }),
   Trade: z.string().min(2, {
     message: "Trade must be at least 2 characters.",
   }),
-  Account: z.string().min(2, {
-    message: "Account must be at least 2 characters.",
-  }),
+  Account: z.enum(["Active", "Inactive"]),
+
+  Billing_Level:z.enum(["Company","Site"]),
+
   ERP_ID: z.number().min(10000, {
     message: "ERP_ID must be at least 5 digits",
   }),
-  Tax_Status: z.enum(["Done", "Pending"]),
-  Contact: z.string().min(10, {
-    message: "Contact number should be at least 10 digits.",
-  }).max(14, {
-    message: "Contact number should be at most 14 digits.",
-  }),
-  Document: z.string().min(2, {
-    message: "Document must be at least 2 characters.",
-  }),
+  Tax_Status: z.enum(["Taxable", "Tax_Exempt"]),
+  Contacts:z.enum(["Main","Billing","Procurement"]),
+  Document:z.enum(["MSA","Contract"])
 });
 
 const Page = () => {
@@ -51,10 +53,7 @@ const Page = () => {
     defaultValues: {
       Name: "",
       Trade: "",
-      Account: "",
-      Tax_Status: "Done", // Default to "Done"
-      Contact: "",
-      Document: ""
+      Account:"Inactive"
     },
   });
 
@@ -66,7 +65,7 @@ const Page = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-4xl font-bold mb-6 text-center underline">Customer Details</h2>
+        <h2 className="text-xl font-bold mb-6 ">Customer Details</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -76,33 +75,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Adarsh" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="ERP_ID"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>ERP_ID</FormLabel>
-                  <FormControl>
-                    <Input placeholder="XXXXX111" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Contact"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Contact</FormLabel>
-                  <FormControl>
-                    <Input placeholder="XXXXXXXX90" {...field} />
+                    <Input placeholder="Adarsh" {...field}  />
                   </FormControl>
                 </FormItem>
               )}
@@ -115,43 +88,140 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Trade</FormLabel>
                   <FormControl>
-                    <Input placeholder="Engineer" {...field} />
+                    <Input placeholder="Engineer" {...field}/>
                   </FormControl>
                 </FormItem>
               )}
             />
 
+        <FormField
+          control={form.control}
+          name="Account"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Billing Level</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select  Account" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Active">Active</SelectItem>
+                  <SelectItem value="Inactive">Inactive</SelectItem>
+                 
+                </SelectContent>
+              </Select>
+             
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="Billing_Level"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Billing Level</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a Billing Level" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Company">Company</SelectItem>
+                  <SelectItem value="Site">Site</SelectItem>
+                 
+                </SelectContent>
+              </Select>
+             
+            </FormItem>
+          )}
+        />
+
             <FormField
               control={form.control}
-              name="Account"
+              name="ERP_ID"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Account</FormLabel>
+                  <FormLabel>ERP_ID</FormLabel>
                   <FormControl>
-                    <select {...field} className="input w-full border-gray-300 rounded-md">
-                      <option value="Active">Done</option>
-                      <option value="Close">Pending</option>
-                    </select>
+                    <Input placeholder="XXXXX111" {...field}  className="input w-full border-gray-300 rounded-md"/>
                   </FormControl>
                 </FormItem>
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="Tax_Status"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tax Status</FormLabel>
-                  <FormControl>
-                    <select {...field} className="input w-full border-gray-300 rounded-md">
-                      <option value="Done">Done</option>
-                      <option value="Pending">Pending</option>
-                    </select>
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+        <FormField
+          control={form.control}
+          name="Tax_Status"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Account</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Tax Status" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Taxable">Taxable</SelectItem>
+                  <SelectItem value="Tax_Exempt">Tax_Exempt</SelectItem>
+                 
+                </SelectContent>
+              </Select>
+             
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="Contacts"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contacts</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Tax Status" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Main">Main</SelectItem>
+                  <SelectItem value="Billing">Billing</SelectItem>
+                  <SelectItem value="Procurement">Procurement</SelectItem>
+
+                 
+                </SelectContent>
+              </Select>
+             
+            </FormItem>
+          )}
+        />
+              <FormField
+          control={form.control}
+          name="Document"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Document</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Tax Status" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="MSA">MSA</SelectItem>
+                  <SelectItem value="Contract">Contract</SelectItem>
+                 
+                </SelectContent>
+              </Select>
+             
+            </FormItem>
+          )}
+        />
             <Button type="submit" className="w-full">Submit</Button>
           </form>
         </Form>
