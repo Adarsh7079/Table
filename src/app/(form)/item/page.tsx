@@ -44,20 +44,28 @@ const formSchema = z.object({
   Spec_Weight: z.number(),
   Length: z.number(),
   Tubesheet_OD: z.number(),
+
   Tube_Count: z.number(),
   Tube_ID: z.number(),
+
   Tube_OD: z.number(),
   Tube_Wall_Thikness: z.number(),
+
   Tube_Layout: z.enum(["Square", "Rectangular"]),
   Tube_Pitch: z.number(),
+
   Metallurgy_Type: z.enum(["Stanless", "Steel", "etc"]),
   Maximum_Hydroblast_Pressure: z.number(),
+
   Item_Specific_Requirements: z.string(),
   Service_Description: z.string(),
+
   ID_Type_Fluid: z.string(),
   ID_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"]),
   OD_Type_Fluid: z.string(),
+
   OD_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"]),
+
   Chemistry_Selection: z.enum(["Surfacant", "Acid", "Both"]),
   Documents: z.enum(["SDS", "TEMA"]),
 });
@@ -103,28 +111,12 @@ const Page = () => {
                   </FormItem>
                 )}
               />
-            </div>
-
-            {/* Row 2 */}
-            <div className="flex gap-4">
               <FormField
                 control={form.control}
                 name="UnitName"
                 render={({ field }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Unit Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="abc" {...field} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="Tag"
-                render={({ field }) => (
-                  <FormItem className="flex-1">
-                    <FormLabel>Tag</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
@@ -182,9 +174,361 @@ const Page = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="Tag"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tag</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
             </div>
 
-            {/* Add more rows similarly if needed */}
+            {/* 4th */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Exchange_Type"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Exchange Type</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Exchange Type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="U_Tube">U-Tube</SelectItem>
+                        <SelectItem value="Straight">Straight</SelectItem>
+                        <SelectItem value="etc">etc</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Spec_Weight"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Spec Weight</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Length"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Length</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* 6th */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Tube_Count"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tube_Count</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tube_ID"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tube ID</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tubesheet_OD"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tubesheet_OD</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* 7th */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Tube_OD"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tube OD</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tube_Wall_Thikness"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tube Wall Thikness</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tube_Layout"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tube Layout</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* 8th */}
+            <div className="flex gap-4"></div>
+
+            {/* 9th */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Metallurgy_Type"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Metallurgy Type</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Metallurgy Type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Stanless">Stanless</SelectItem>
+                        <SelectItem value="Steel">Steel</SelectItem>
+                        <SelectItem value="etc">etc</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Maximum_Hydroblast_Pressure"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Maximum_Hydroblast_Pressure</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tube_Pitch"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tube Pitch</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* 10th */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Item_Specific_Requirements"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Item Specific Requirements</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Service_Description"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Service Description</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="OD_Class_Fouling"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>OD Class Fouling</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select OD Class Fouling" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Hydrocarbon">Hydrocarbon</SelectItem>
+                        <SelectItem value="Scale">Scale</SelectItem>
+                        <SelectItem value="etc">etc</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="ID_Type_Fluid"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>ID Type Fluid</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="ID_Class_Fouling"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>ID Class Fouling</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select ID   Class Fouling" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Hydrocarbon">Hydrocarbon</SelectItem>
+                        <SelectItem value="Scale">Scale</SelectItem>
+                        <SelectItem value="etc">etc</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="OD_Type_Fluid"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>OD Type Fluid</FormLabel>
+                    <FormControl>
+                      <Input placeholder="abc" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* 11th */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Chemistry_Selection"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Chemistry Selection</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select OD Class Fouling" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Surfacant">Surfacant</SelectItem>
+                        <SelectItem value="Acid">Acid</SelectItem>
+                        <SelectItem value="Both">Both</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Documents"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Documents</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Documents" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="SDS">SDS</SelectItem>
+                        <SelectItem value="TEMA">TEMA</SelectItem>
+                        <SelectItem value="etc">etc</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+            </div>
 
             <Button type="submit" className="w-full">
               Submit
