@@ -73,417 +73,118 @@ const Page = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-3xl">
         <h2 className="text-xl font-bold mb-6">Item Details</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="CustomerCorporateName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Customer Corporate Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Adarsh" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="SiteName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Site Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="UnitName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Unit Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Tag"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tag</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Team_Type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Team Type</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+            {/* Row 1 */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="CustomerCorporateName"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Customer Corporate Name</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Team Type" />
-                      </SelectTrigger>
+                      <Input placeholder="Adarsh" {...field} />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Front">Front</SelectItem>
-                      <SelectItem value="Shell">Shell</SelectItem>
-                      <SelectItem value="Rear">Rear</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Compabloc_Type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Compabloc Type</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="SiteName"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Site Name</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Compabloc Type" />
-                      </SelectTrigger>
+                      <Input placeholder="abc" {...field} />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="A">At</SelectItem>
-                      <SelectItem value="B">B</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Exchange_Type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Exchange Type</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* Row 2 */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="UnitName"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Unit Name</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Exchange Type" />
-                      </SelectTrigger>
+                      <Input placeholder="abc" {...field} />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="U_Tube">U-Tube</SelectItem>
-                      <SelectItem value="Straight">Straight</SelectItem>
-                      <SelectItem value="etc">etc</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Spec_Weight"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Spec Weight</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Length"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Length</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Tubesheet_OD"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tubesheet_OD</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Tube_ID"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tube ID</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Tube_Wall_Thikness"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tube Wall Thikness</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Tube_Layout"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tube_Layout</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tag"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Tag</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Tube Layout" />
-                      </SelectTrigger>
+                      <Input placeholder="abc" {...field} />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Square">Square</SelectItem>
-                      <SelectItem value="Rectangular">Rectangular</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
+                  </FormItem>
+                )}
+              />
+            </div>
 
-            <FormField
-              control={form.control}
-              name="Tube_Pitch"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tube Pitch</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+            {/* Row 3 */}
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
+                name="Team_Type"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Team Type</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Team Type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Front">Front</SelectItem>
+                        <SelectItem value="Shell">Shell</SelectItem>
+                        <SelectItem value="Rear">Rear</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Compabloc_Type"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Compabloc Type</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Compabloc Type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="A">A</SelectItem>
+                        <SelectItem value="B">B</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+            </div>
 
-            <FormField
-              control={form.control}
-              name="Metallurgy_Type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Metallurgy_Type</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Metallurgy Type" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Stanless">Stanless</SelectItem>
-                      <SelectItem value="Steel">Steel</SelectItem>
-                      <SelectItem value="etc">etc</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Maximum_Hydroblast_Pressure"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Maximum Hydroblast Pressure</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Item_Specific_Requirements"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Item Specific Requirements</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Service_Description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Service Description</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="ID_Type_Fluid"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>ID Type Fluid</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="ID_Class_Fouling"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>ID_Class_Fouling</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select ID Class Fouling" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Hydrocarbon">Hydrocarbon</SelectItem>
-                      <SelectItem value="Scale">Scale</SelectItem>
-                      <SelectItem value="etc">etc</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="OD_Type_Fluid"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>OD Type Fluid</FormLabel>
-                  <FormControl>
-                    <Input placeholder="abc" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="OD_Class_Fouling"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>OD Class Fouling</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select ID Class Fouling" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Hydrocarbon">Hydrocarbon</SelectItem>
-                      <SelectItem value="Scale">Scale</SelectItem>
-                      <SelectItem value="etc">etc</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Chemistry_Selection"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Chemistry Selection</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Chemistry Selection" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Surfacant">Surfacant</SelectItem>
-                      <SelectItem value="Acid">Acid</SelectItem>
-                      <SelectItem value="Both">Both</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="Documents"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Documents</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select Documents" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="SDS">SDS</SelectItem>
-                      <SelectItem value="TEMA">TEMA</SelectItem>
-                      <SelectItem value="etc">etc</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
+            {/* Add more rows similarly if needed */}
 
             <Button type="submit" className="w-full">
               Submit
