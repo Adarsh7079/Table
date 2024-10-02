@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { number, z } from "zod";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +12,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormMessage,
   FormLabel,
 } from "@/components/ui/form/form";
 import {
@@ -38,41 +39,76 @@ const formSchema = z.object({
   Tag: z.string().min(5, {
     message: "Site Name must be at least 5 characters.",
   }),
-  Team_Type: z.enum(["Front", "Shell", "Rear"]),
-  Compabloc_Type: z.enum(["A", "B"]),
-  Exchange_Type: z.enum(["U_Tube", "Straight", "etc"]),
-  Spec_Weight: z.number(),
-  Length: z.number(),
-  Tubesheet_OD: z.number(),
+  Team_Type: z.enum(["Front", "Shell", "Rear"],{errorMap: () => ({ message: "Team Type is required." }),
+}),
+  Compabloc_Type: z.enum(["A", "B"],
+    {errorMap: () => ({ message: "Compabloc_Type is required." }),}
+  ),
+  Exchange_Type: z.enum(["U_Tube", "Straight", "etc"],{errorMap: () => ({ message: "Exchange type is required." }),}),
+  Spec_Weight: z.number().min(100000, {
+    message: "Spec Weigth must be at least 6 digits.",
+  }),
+  Length: z.number().min(100000, {
+    message: "Length must be at least 6 digits.",
+  }),
+  Tubesheet_OD: z.number().min(100000, {
+    message: "Tubesheet must be at least 6 digits.",
+  }),
 
-  Tube_Count: z.number(),
-  Tube_ID: z.number(),
+  Tube_Count: z.number().min(100000, {
+    message: "Tube Count must be at least 6 digits.",
+  }),
+  Tube_ID: z.number().min(100000, {
+    message: "Tube ID must be at least 6 digits.",
+  }),
 
-  Tube_OD: z.number(),
-  Tube_Wall_Thikness: z.number(),
+  Tube_OD: z.number().min(100000, {
+    message: "Tube OD must be at least 6 digits.",
+  }),
+  Tube_Wall_Thikness: z.number().min(100000, {
+    message: "Tube Wall Thikness must be at least 6 digits.",
+  }),
 
-  Tube_Layout: z.enum(["Square", "Rectangular"]),
-  Tube_Pitch: z.number(),
+  Tube_Layout: z.enum(["Square", "Rectangular"],{errorMap: () => ({ message: "Tube_Layout is required." })}),
+  Tube_Pitch: z.number().min(100000, {
+    message: "Tube Pitch must be at least 6 digits.",
+  }),
 
-  Metallurgy_Type: z.enum(["Stanless", "Steel", "etc"]),
-  Maximum_Hydroblast_Pressure: z.number(),
+  Metallurgy_Type: z.enum(["Stanless", "Steel", "etc"],{errorMap: () => ({ message: "Metallurgy_Type is required." })}),
+  Maximum_Hydroblast_Pressure: z.number().min(100000, {
+    message: "Maximum Hydroblast Pressure must be at least 6 digits.",
+  }),
 
   Item_Specific_Requirements: z.string(),
   Service_Description: z.string(),
 
-  ID_Type_Fluid: z.string(),
-  ID_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"]),
-  OD_Type_Fluid: z.string(),
+  ID_Type_Fluid: z.string().min(5, {
+    message: "ID Type Fluid must be at least 5 characters.",
+  }),
+  ID_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"],{errorMap: () => ({ message: "ID_Class_Fouling is required." })}),
+  OD_Type_Fluid: z.string().min(5, {
+    message: "OD_Type_Fluid must be at least 5 characters.",
+  }),
 
-  OD_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"]),
+  OD_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"],{errorMap: () => ({ message: "OD_Class_Fouling is required." })}),
 
-  Chemistry_Selection: z.enum(["Surfacant", "Acid", "Both"]),
-  Documents: z.enum(["SDS", "TEMA"]),
+  Chemistry_Selection: z.enum(["Surfacant", "Acid", "Both"],{errorMap: () => ({ message: "ID_Class_Fouling is required." })}),
+  Documents: z.enum(["SDS", "TEMA"],{errorMap: () => ({ message: "Documents is required." })}),
 });
 
 const Page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues:{
+      CustomerCorporateName:"",
+      SiteName:"",
+      UnitName:"",
+      Tag:"",
+      ID_Type_Fluid:"",
+      OD_Type_Fluid:"",
+      Maximum_Hydroblast_Pressure:Number("")
+      
+    }
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -81,7 +117,7 @@ const Page = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-3xl">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
         <h2 className="text-xl font-bold mb-6">Item Details</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -90,36 +126,42 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="CustomerCorporateName"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Customer Corporate Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Adarsh" {...field} />
                     </FormControl>
+                                     <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="SiteName"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Site Name</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                                     <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="UnitName"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Unit Name</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                                     <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -130,7 +172,7 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Team_Type"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Team Type</FormLabel>
                     <Select
@@ -148,13 +190,15 @@ const Page = () => {
                         <SelectItem value="Rear">Rear</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+           
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Compabloc_Type"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Compabloc Type</FormLabel>
                     <Select
@@ -171,18 +215,22 @@ const Page = () => {
                         <SelectItem value="B">B</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Tag"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tag</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                                     <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -193,7 +241,7 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Exchange_Type"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Exchange Type</FormLabel>
                     <Select
@@ -211,30 +259,36 @@ const Page = () => {
                         <SelectItem value="etc">etc</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Spec_Weight"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Spec Weight</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Length"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Length</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -245,36 +299,42 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Tube_Count"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tube_Count</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Tube_ID"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tube ID</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Tubesheet_OD"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tubesheet_OD</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -285,36 +345,42 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Tube_OD"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tube OD</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Tube_Wall_Thikness"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tube Wall Thikness</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Tube_Layout"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tube Layout</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+           
                   </FormItem>
                 )}
               />
@@ -328,7 +394,7 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Metallurgy_Type"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Metallurgy Type</FormLabel>
                     <Select
@@ -346,30 +412,36 @@ const Page = () => {
                         <SelectItem value="etc">etc</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Maximum_Hydroblast_Pressure"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Maximum_Hydroblast_Pressure</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Tube_Pitch"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Tube Pitch</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -380,31 +452,35 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Item_Specific_Requirements"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Item Specific Requirements</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Service_Description"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Service Description</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="OD_Class_Fouling"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>OD Class Fouling</FormLabel>
                     <Select
@@ -422,6 +498,8 @@ const Page = () => {
                         <SelectItem value="etc">etc</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -431,19 +509,22 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="ID_Type_Fluid"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>ID Type Fluid</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="ID_Class_Fouling"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>ID Class Fouling</FormLabel>
                     <Select
@@ -461,18 +542,22 @@ const Page = () => {
                         <SelectItem value="etc">etc</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="OD_Type_Fluid"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>OD Type Fluid</FormLabel>
                     <FormControl>
                       <Input placeholder="abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
@@ -483,7 +568,7 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Chemistry_Selection"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Chemistry Selection</FormLabel>
                     <Select
@@ -501,13 +586,15 @@ const Page = () => {
                         <SelectItem value="Both">Both</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="Documents"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem className="flex-1">
                     <FormLabel>Documents</FormLabel>
                     <Select
@@ -525,6 +612,8 @@ const Page = () => {
                         <SelectItem value="etc">etc</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+             
                   </FormItem>
                 )}
               />

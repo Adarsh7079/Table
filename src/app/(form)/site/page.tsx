@@ -5,14 +5,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-
-// Getting components from shadcn form
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
+  FormMessage, // Import FormMessage to show error messages
 } from "@/components/ui/form/form";
 import {
   Select,
@@ -21,7 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
@@ -32,21 +30,28 @@ const formSchema = z.object({
     message: "Site Name must be at least 5 characters.",
   }),
   SiteDescription: z.string().min(2, {
-    message: "Trade must be at least 2 characters.",
+    message: "Description must be at least 2 characters.",
   }),
-  Type: z.enum(["Refinery", "Chemical", "Olefin"]),
+  Type: z.enum(["Refinery", "Chemical", "Olefin"],{errorMap: () => ({ message: "Type is required." })}),
   ERP_ID: z.number().min(10000, {
-    message: "ERP_ID must be at least 5 digits",
+    message: "ERP_ID must be at least 5 digits.",
   }),
-  Tax_Status: z.enum(["Taxable", "Tax_Exempt"]),
-  Tax_Group: z.enum(["A", "B"]),
-  Contacts: z.enum(["Main", "Billing", "Procurement"]),
-  Document: z.enum(["MSA", "Contract"]),
+  Tax_Status: z.enum(["Taxable", "Tax_Exempt"],{errorMap: () => ({ message: "Tax Status is required." })}),
+  Tax_Group: z.enum(["A", "B"],{errorMap: () => ({ message: "Tax Group is required." })}),
+  Contacts: z.enum(["Main", "Billing", "Procurement"],{errorMap: () => ({ message: "Contacts is required." })}),
+  Document: z.enum(["MSA", "Contract"],{errorMap: () => ({ message: "Documents is required." })}),
 });
 
 const Page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      CustomerCorporateName: "", // Default value for Customer Corporate Name
+      SiteName: "",               // Default value for Site Name
+      SiteDescription: "",        // Default value for Site Description
+     
+      
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -68,6 +73,7 @@ const Page = () => {
                   <FormControl>
                     <Input placeholder="Adarsh" {...field} />
                   </FormControl>
+                  <FormMessage>{form.formState.errors.CustomerCorporateName?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -81,6 +87,7 @@ const Page = () => {
                   <FormControl>
                     <Input placeholder="abc" {...field} />
                   </FormControl>
+                  <FormMessage>{form.formState.errors.SiteName?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -94,6 +101,7 @@ const Page = () => {
                   <FormControl>
                     <Input placeholder="Description" {...field} />
                   </FormControl>
+                  <FormMessage>{form.formState.errors.SiteDescription?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -116,6 +124,7 @@ const Page = () => {
                       <SelectItem value="Olefin">Olefin</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage>{form.formState.errors.Type?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -127,8 +136,9 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>ERP_ID</FormLabel>
                   <FormControl>
-                    <Input placeholder="XXXXX111" {...field} />
+                    <Input placeholder="XXXXX111" type="number" {...field} />
                   </FormControl>
+                  <FormMessage>{form.formState.errors.ERP_ID?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -150,6 +160,7 @@ const Page = () => {
                       <SelectItem value="Tax_Exempt">Tax Exempt</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage>{form.formState.errors.Tax_Status?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -171,6 +182,7 @@ const Page = () => {
                       <SelectItem value="B">B</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage>{form.formState.errors.Tax_Group?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -193,6 +205,7 @@ const Page = () => {
                       <SelectItem value="Procurement">Procurement</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage>{form.formState.errors.Contacts?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -214,6 +227,7 @@ const Page = () => {
                       <SelectItem value="Contract">Contract</SelectItem>
                     </SelectContent>
                   </Select>
+                  <FormMessage>{form.formState.errors.Document?.message}</FormMessage>
                 </FormItem>
               )}
             />
