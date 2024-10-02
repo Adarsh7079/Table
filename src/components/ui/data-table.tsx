@@ -13,7 +13,7 @@ import {
 } from "@tanstack/react-table"
 import { Input } from "@/components/ui/input"
 
-import { Button } from "./ui/button"
+import { Button } from "./button"
 
 import {
   Table,

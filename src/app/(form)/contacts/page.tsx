@@ -5,15 +5,14 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-
-// Getting components from shadcn form
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
+  FormMessage,
+} from "@/components/ui/form/form";
 import {
   Select,
   SelectContent,
@@ -21,18 +20,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { Input } from "@/components/ui/input";
 
+// Zod Validation Schema
 const formSchema = z.object({
-  CustomerName: z.string().min(5, {
+  Customer: z.string().min(5, {
     message: "Customer Name must be at least 5 characters.",
   }),
   Site: z.string().min(5, {
     message: "Site must be at least 5 characters.",
   }),
-  Unit: z.enum(["A", "B", "C"]),
-  Type: z.enum(["FMS", "List", "etc"]),
+  Unit: z.enum(["A", "B", "C"], {
+    errorMap: () => ({ message: "Unit is required." }),
+  }),
+  Type: z.enum(["FMS", "List", "etc"], {
+    errorMap: () => ({ message: "Type is required." }),
+  }),
   Name: z.string().min(5, {
     message: "Name must be at least 5 characters.",
   }),
@@ -62,29 +65,44 @@ const formSchema = z.object({
 const Page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      Customer: "",
+      Site: "",
+  
+   
+      Name: "",
+      Address1: "",
+      Address2: "",
+      City: "",
+      State: "",
+    
+      Phones: "",
+      email: "",
+    },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-  }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-xl font-bold mb-6">Contact Details</h2>
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl">
+        <h2 className="text-xl font-bold mb-6">Contacts Details</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            {/* First Part */}
+            {/* Form Fields */}
             <div className="flex gap-10">
               <FormField
                 control={form.control}
-                name="CustomerName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Customer Name</FormLabel>
+                name="Customer"
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Customer</FormLabel>
                     <FormControl>
-                      <Input placeholder="Adarsh" {...field} />
+                      <Input placeholder="Aditya" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -92,80 +110,84 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Site"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>Site</FormLabel>
                     <FormControl>
                       <Input placeholder="Abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
             </div>
+
             <div className="flex gap-10">
-  <FormField
-    control={form.control}
-    name="Unit"
-    render={({ field }) => (
-      <FormItem className="flex-1">
-        <FormLabel>Unit</FormLabel>
-        <Select
-          onValueChange={field.onChange}
-          defaultValue={field.value}
-        >
-          <FormControl>
-            <SelectTrigger>
-              <SelectValue placeholder="Select Unit" />
-            </SelectTrigger>
-          </FormControl>
-          <SelectContent>
-            <SelectItem value="A">A</SelectItem>
-            <SelectItem value="B">B</SelectItem>
-            <SelectItem value="C">C</SelectItem>
-          </SelectContent>
-        </Select>
-      </FormItem>
-    )}
-  />
+              <FormField
+                control={form.control}
+                name="Unit"
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Unit</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Unit" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="A">A</SelectItem>
+                        <SelectItem value="B">B</SelectItem>
+                        <SelectItem value="C">C</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+                  </FormItem>
+                )}
+              />
 
-  <FormField
-    control={form.control}
-    name="Type"
-    render={({ field }) => (
-      <FormItem className="flex-1">
-        <FormLabel>Type</FormLabel>
-        <Select
-          onValueChange={field.onChange}
-          defaultValue={field.value}
-        >
-          <FormControl>
-            <SelectTrigger>
-              <SelectValue placeholder="Select Type" />
-            </SelectTrigger>
-          </FormControl>
-          <SelectContent>
-            <SelectItem value="FMS">FMS</SelectItem>
-            <SelectItem value="List">List</SelectItem>
-            <SelectItem value="etc">etc</SelectItem>
-          </SelectContent>
-        </Select>
-      </FormItem>
-    )}
-  />
-</div>
+              <FormField
+                control={form.control}
+                name="Type"
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>Type</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="FMS">FMS</SelectItem>
+                        <SelectItem value="List">List</SelectItem>
+                        <SelectItem value="etc">etc</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
+                  </FormItem>
+                )}
+              />
+            </div>
 
-
-            {/* Second Part */}
+            {/* Additional Form Fields */}
             <div className="flex gap-10">
               <FormField
                 control={form.control}
                 name="Name"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abc" {...field} />
+                      <Input placeholder="Abhi" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -173,27 +195,30 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Address1"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>Address1</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abc" {...field} />
+                      <Input placeholder="Gurgaon,india" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
             </div>
 
+            {/* Remaining Fields */}
             <div className="flex gap-10">
               <FormField
                 control={form.control}
                 name="Address2"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>Address2</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abc" {...field} />
+                      <Input placeholder="Bihar,India" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -201,12 +226,13 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="City"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>City</FormLabel>
                     <FormControl>
                       <Input placeholder="Abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -216,12 +242,13 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="State"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>State</FormLabel>
                     <FormControl>
                       <Input placeholder="Abc" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -229,12 +256,13 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="ZIP"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>ZIP</FormLabel>
                     <FormControl>
-                      <Input placeholder="123456" {...field} />
+                      <Input placeholder="123456" type="number" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -244,12 +272,13 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="Phones"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>Phones</FormLabel>
                     <FormControl>
                       <Input placeholder="1234567890" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -257,12 +286,13 @@ const Page = () => {
               <FormField
                 control={form.control}
                 name="email"
-                render={({ field }) => (
-                  <FormItem>
+                render={({ field, fieldState }) => (
+                  <FormItem className="flex-1">
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input placeholder="example@mail.com" {...field} />
                     </FormControl>
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />

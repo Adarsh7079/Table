@@ -15,7 +15,7 @@ import {
   FormItem,
   FormLabel,
 
-} from "@/components/ui/form";
+} from "@/components/ui/form/form";
 import {
   Select,
   SelectContent,
