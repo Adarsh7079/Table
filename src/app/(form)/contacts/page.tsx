@@ -68,14 +68,11 @@ const Page = () => {
     defaultValues: {
       Customer: "",
       Site: "",
-  
-   
       Name: "",
       Address1: "",
       Address2: "",
       City: "",
       State: "",
-    
       Phones: "",
       email: "",
     },
@@ -92,7 +89,7 @@ const Page = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {/* Form Fields */}
-            <div className="flex gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <FormField
                 control={form.control}
                 name="Customer"
@@ -100,7 +97,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Customer</FormLabel>
                     <FormControl>
-                      <Input placeholder="Aditya" {...field} />
+                      <Input placeholder="enter customer name" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -114,7 +111,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Site</FormLabel>
                     <FormControl>
-                      <Input placeholder="enter site name " {...field} />
+                      <Input placeholder="enter site name" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -122,7 +119,7 @@ const Page = () => {
               />
             </div>
 
-            <div className="flex gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <FormField
                 control={form.control}
                 name="Unit"
@@ -177,7 +174,7 @@ const Page = () => {
             </div>
 
             {/* Additional Form Fields */}
-            <div className="flex gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <FormField
                 control={form.control}
                 name="Name"
@@ -185,7 +182,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abhi" {...field} />
+                      <Input placeholder="enter your name" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -199,7 +196,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Address1</FormLabel>
                     <FormControl>
-                      <Input placeholder="Gurgaon,india" {...field} />
+                      <Input placeholder="enter your address-1" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -208,7 +205,7 @@ const Page = () => {
             </div>
 
             {/* Remaining Fields */}
-            <div className="flex gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <FormField
                 control={form.control}
                 name="Address2"
@@ -216,7 +213,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Address2</FormLabel>
                     <FormControl>
-                      <Input placeholder="Bihar,India" {...field} />
+                      <Input placeholder="enter your address-2" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -230,7 +227,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>City</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abc" {...field} />
+                      <Input placeholder="enter your city" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -238,7 +235,7 @@ const Page = () => {
               />
             </div>
 
-            <div className="flex gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <FormField
                 control={form.control}
                 name="State"
@@ -246,7 +243,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>State</FormLabel>
                     <FormControl>
-                      <Input placeholder="Bihar" {...field} />
+                      <Input placeholder="enter your state" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -260,7 +257,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>ZIP</FormLabel>
                     <FormControl>
-                      <Input placeholder="123456" type="number" {...field} />
+                      <Input placeholder="enter your ZIP" type="number" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -268,7 +265,7 @@ const Page = () => {
               />
             </div>
 
-            <div className="flex gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <FormField
                 control={form.control}
                 name="Phones"
@@ -276,7 +273,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Phones</FormLabel>
                     <FormControl>
-                      <Input placeholder="1234567890" {...field} />
+                      <Input placeholder="enter your phones" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -290,7 +287,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="example@mail.com" {...field} />
+                      <Input placeholder="enter your email" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>

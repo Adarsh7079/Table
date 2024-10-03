@@ -81,7 +81,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Adarsh" {...field} />
+                    <Input placeholder="enter user name" {...field} />
                   </FormControl>
                   <FormMessage>{fieldState.error?.message}</FormMessage>
                 </FormItem>
@@ -95,7 +95,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Trade</FormLabel>
                   <FormControl>
-                    <Input placeholder="Engineer" {...field} />
+                    <Input placeholder="enter your trade" {...field} />
                   </FormControl>
                   <FormMessage>{fieldState.error?.message}</FormMessage>
                 </FormItem>

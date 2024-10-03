@@ -71,7 +71,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Customer Corporate Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Adarsh" {...field} />
+                    <Input placeholder="enter customer corporate name" {...field} />
                   </FormControl>
                   <FormMessage>{form.formState.errors.CustomerCorporateName?.message}</FormMessage>
                 </FormItem>
@@ -99,7 +99,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Site Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="Description" {...field} />
+                    <Input placeholder="enter site description" {...field} />
                   </FormControl>
                   <FormMessage>{form.formState.errors.SiteDescription?.message}</FormMessage>
                 </FormItem>

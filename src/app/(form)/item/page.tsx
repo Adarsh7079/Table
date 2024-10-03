@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {  z } from "zod";
+import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 
@@ -39,12 +39,15 @@ const formSchema = z.object({
   Tag: z.string().min(5, {
     message: "Site Name must be at least 5 characters.",
   }),
-  Team_Type: z.enum(["Front", "Shell", "Rear"],{errorMap: () => ({ message: "Team Type is required." }),
-}),
-  Compabloc_Type: z.enum(["A", "B"],
-    {errorMap: () => ({ message: "Compabloc_Type is required." }),}
-  ),
-  Exchange_Type: z.enum(["U_Tube", "Straight", "etc"],{errorMap: () => ({ message: "Exchange type is required." }),}),
+  Team_Type: z.enum(["Front", "Shell", "Rear"], {
+    errorMap: () => ({ message: "Team Type is required." }),
+  }),
+  Compabloc_Type: z.enum(["A", "B"], {
+    errorMap: () => ({ message: "Compabloc_Type is required." }),
+  }),
+  Exchange_Type: z.enum(["U_Tube", "Straight", "etc"], {
+    errorMap: () => ({ message: "Exchange type is required." }),
+  }),
   Spec_Weight: z.number().min(100000, {
     message: "Spec Weigth must be at least 6 digits.",
   }),
@@ -69,12 +72,16 @@ const formSchema = z.object({
     message: "Tube Wall Thikness must be at least 6 digits.",
   }),
 
-  Tube_Layout: z.enum(["Square", "Rectangular"],{errorMap: () => ({ message: "Tube_Layout is required." })}),
+  Tube_Layout: z.enum(["Square", "Rectangular"], {
+    errorMap: () => ({ message: "Tube_Layout is required." }),
+  }),
   Tube_Pitch: z.number().min(100000, {
     message: "Tube Pitch must be at least 6 digits.",
   }),
 
-  Metallurgy_Type: z.enum(["Stanless", "Steel", "etc"],{errorMap: () => ({ message: "Metallurgy_Type is required." })}),
+  Metallurgy_Type: z.enum(["Stanless", "Steel", "etc"], {
+    errorMap: () => ({ message: "Metallurgy_Type is required." }),
+  }),
   Maximum_Hydroblast_Pressure: z.number().min(100000, {
     message: "Maximum Hydroblast Pressure must be at least 6 digits.",
   }),
@@ -85,30 +92,37 @@ const formSchema = z.object({
   ID_Type_Fluid: z.string().min(5, {
     message: "ID Type Fluid must be at least 5 characters.",
   }),
-  ID_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"],{errorMap: () => ({ message: "ID_Class_Fouling is required." })}),
+  ID_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"], {
+    errorMap: () => ({ message: "ID_Class_Fouling is required." }),
+  }),
   OD_Type_Fluid: z.string().min(5, {
     message: "OD_Type_Fluid must be at least 5 characters.",
   }),
 
-  OD_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"],{errorMap: () => ({ message: "OD_Class_Fouling is required." })}),
+  OD_Class_Fouling: z.enum(["Hydrocarbon", "Scale", "etc"], {
+    errorMap: () => ({ message: "OD_Class_Fouling is required." }),
+  }),
 
-  Chemistry_Selection: z.enum(["Surfacant", "Acid", "Both"],{errorMap: () => ({ message: "ID_Class_Fouling is required." })}),
-  Documents: z.enum(["SDS", "TEMA"],{errorMap: () => ({ message: "Documents is required." })}),
+  Chemistry_Selection: z.enum(["Surfacant", "Acid", "Both"], {
+    errorMap: () => ({ message: "ID_Class_Fouling is required." }),
+  }),
+  Documents: z.enum(["SDS", "TEMA"], {
+    errorMap: () => ({ message: "Documents is required." }),
+  }),
 });
 
 const Page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues:{
-      CustomerCorporateName:"",
-      SiteName:"",
-      UnitName:"",
-      Tag:"",
-      ID_Type_Fluid:"",
-      OD_Type_Fluid:"",
-      Maximum_Hydroblast_Pressure:Number("")
-      
-    }
+    defaultValues: {
+      CustomerCorporateName: "",
+      SiteName: "",
+      UnitName: "",
+      Tag: "",
+      ID_Type_Fluid: "",
+      OD_Type_Fluid: "",
+      Maximum_Hydroblast_Pressure: Number(""),
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -122,7 +136,7 @@ const Page = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {/* Row 1 */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="CustomerCorporateName"
@@ -132,8 +146,7 @@ const Page = () => {
                     <FormControl>
                       <Input placeholder="Adarsh" {...field} />
                     </FormControl>
-                                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -146,8 +159,7 @@ const Page = () => {
                     <FormControl>
                       <Input placeholder="site name " {...field} />
                     </FormControl>
-                                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -160,15 +172,14 @@ const Page = () => {
                     <FormControl>
                       <Input placeholder="unit name" {...field} />
                     </FormControl>
-                                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
             </div>
 
             {/* Row 3 */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Team_Type"
@@ -191,7 +202,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-           
                   </FormItem>
                 )}
               />
@@ -216,7 +226,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -229,15 +238,14 @@ const Page = () => {
                     <FormControl>
                       <Input placeholder="enter tag" {...field} />
                     </FormControl>
-                                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
+                    <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
                 )}
               />
             </div>
 
             {/* 4th */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Exchange_Type"
@@ -260,7 +268,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -274,7 +281,6 @@ const Page = () => {
                       <Input placeholder="123" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -288,14 +294,13 @@ const Page = () => {
                       <Input placeholder="213" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
             </div>
 
             {/* 6th */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Tube_Count"
@@ -306,7 +311,6 @@ const Page = () => {
                       <Input placeholder="12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -320,7 +324,6 @@ const Page = () => {
                       <Input placeholder="XXXXX12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -334,14 +337,13 @@ const Page = () => {
                       <Input placeholder="XX12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
             </div>
 
             {/* 7th */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Tube_OD"
@@ -352,7 +354,6 @@ const Page = () => {
                       <Input placeholder="XXX12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -366,7 +367,6 @@ const Page = () => {
                       <Input placeholder="23" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -380,17 +380,16 @@ const Page = () => {
                       <Input placeholder="123" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-           
                   </FormItem>
                 )}
               />
             </div>
 
             {/* 8th */}
-            <div className="flex gap-4"></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
 
             {/* 9th */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Metallurgy_Type"
@@ -413,7 +412,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -427,7 +425,6 @@ const Page = () => {
                       <Input placeholder="abc" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -441,14 +438,13 @@ const Page = () => {
                       <Input placeholder="12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
             </div>
 
             {/* 10th */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Item_Specific_Requirements"
@@ -459,7 +455,6 @@ const Page = () => {
                       <Input placeholder="enter description" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -473,7 +468,6 @@ const Page = () => {
                       <Input placeholder="enter description" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -499,13 +493,12 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
             </div>
 
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="ID_Type_Fluid"
@@ -517,7 +510,6 @@ const Page = () => {
                     </FormControl>
 
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -543,7 +535,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -557,14 +548,13 @@ const Page = () => {
                       <Input placeholder="enter type" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
             </div>
 
             {/* 11th */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="Chemistry_Selection"
@@ -587,7 +577,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
@@ -613,7 +602,6 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
-             
                   </FormItem>
                 )}
               />
