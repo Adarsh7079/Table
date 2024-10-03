@@ -144,7 +144,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Site Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="site name " {...field} />
                     </FormControl>
                                      <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -158,7 +158,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Unit Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="unit name" {...field} />
                     </FormControl>
                                      <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -227,7 +227,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tag</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="enter tag" {...field} />
                     </FormControl>
                                      <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -271,7 +271,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Spec Weight</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="123" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -285,7 +285,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Length</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="213" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -303,7 +303,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tube_Count</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -317,7 +317,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tube ID</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="XXXXX12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -331,7 +331,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tubesheet_OD</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="XX12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -349,7 +349,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tube OD</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="XXX12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -363,7 +363,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tube Wall Thikness</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="23" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -377,7 +377,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tube Layout</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="123" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
            
@@ -438,7 +438,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Tube Pitch</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="12" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -456,7 +456,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Item Specific Requirements</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="enter description" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -470,7 +470,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Service Description</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="enter description" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              
@@ -513,7 +513,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>ID Type Fluid</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="enter type" {...field} />
                     </FormControl>
 
                     <FormMessage>{fieldState.error?.message}</FormMessage>
@@ -554,7 +554,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>OD Type Fluid</FormLabel>
                     <FormControl>
-                      <Input placeholder="abc" {...field} />
+                      <Input placeholder="enter type" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
              

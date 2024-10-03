@@ -83,7 +83,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Site Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Abc" {...field} />
+                    <Input placeholder="india" {...field} />
                   </FormControl>
                   <FormMessage>{form.formState.errors.Site_Name?.message}</FormMessage>
                 </FormItem>
@@ -97,7 +97,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Unit Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Abc" {...field} />
+                    <Input placeholder="Abhi" {...field} />
                   </FormControl>
                   <FormMessage>{form.formState.errors.Unit_Name?.message}</FormMessage>
                 </FormItem>
@@ -111,7 +111,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Unit Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="Abc" {...field} />
+                    <Input placeholder="About unit" {...field} />
                   </FormControl>
                   <FormMessage>{form.formState.errors.Unit_Description?.message}</FormMessage>
                 </FormItem>

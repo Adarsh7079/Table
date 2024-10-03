@@ -114,7 +114,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>Site</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abc" {...field} />
+                      <Input placeholder="enter site name " {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>
@@ -246,7 +246,7 @@ const Page = () => {
                   <FormItem className="flex-1">
                     <FormLabel>State</FormLabel>
                     <FormControl>
-                      <Input placeholder="Abc" {...field} />
+                      <Input placeholder="Bihar" {...field} />
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>

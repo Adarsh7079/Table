@@ -85,7 +85,7 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Site Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="abc" {...field} />
+                    <Input placeholder="enter site name" {...field} />
                   </FormControl>
                   <FormMessage>{form.formState.errors.SiteName?.message}</FormMessage>
                 </FormItem>
